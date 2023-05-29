@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    parameters {
+        string(defaultValue:"", description:"Deployment name?", name:"deploymentname")
+        choice(choices: ["EU-WEST-2A","EU-WEST-2B","EU-WEST-2C"], description:"Enabled Service?", name:"Exercise3")
+        booleanParam(defaultValue:"False", description:"CONFIRM DEPLOYMENT?", name: "boolParam")
+    }
+    stages{
+        stage("Demo"){
+            steps {
+                echo "Choice is set to: ${params.Exercise3} "
+            }
+
+        }
+        stage("Demo1"){
+            steps {
+                echo "Deployment name is: ${params.deploymentname}"
+            }
+        }
+        stage("Demo2"){
+            steps{
+                echo "Deployment is Confirm: ${params.boolParam}"
+            }
+        }
+    }
+}
